@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transactions</title>
+</head>
+<body>
+    <h2>Your Transactions</h2>
+    <ul>
+        {% for transaction in transactions %}
+        <li>
+            <p>Transaction ID: {{ transaction.Trans_ID }}</p>
+            <p>Type: {% if transaction.Trans_Type %}Credit{% else %}Debit{% endif %}</p>
+            <p>Date: {{ transaction.Trans_Date }}</p>
+            <p>Amount: ${{ transaction.Trans_Amount }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

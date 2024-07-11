@@ -1,0 +1,35 @@
+<!-- wallet.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wallet</title>
+</head>
+<body>
+    <h1>Wallet</h1>
+    <p>Wallet Balance: {{ balance }}</p>
+    <p>Amount to Pay: {{ amount_to_pay }}</p>
+    
+    {% if amount_to_pay > 0 %}
+    <form method="post">
+        <input type="hidden" name="pay_order" value="1">
+        <button type="submit">Pay Order</button>
+    </form>
+    {% endif %}
+    
+    <form method="post">
+        <label for="amount">Add Money:</label>
+        <input type="text" name="amount" id="amount">
+        <button type="submit" name="add_money" value="1">Add Money</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

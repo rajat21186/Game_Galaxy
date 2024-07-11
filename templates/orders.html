@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+</head>
+<body>
+    <h2>Orders</h2>
+    <ul>
+        {% for order in orders %}
+        <li>
+            <h3>Order ID: {{ order.Order_ID }}</h3>
+            <p>Game: {{ order.game_details.Title }}</p>
+            <p>Price: ${{ order.game_details.Price }}</p>
+            <p>Quantity: {{ order.Quantity }}</p>
+            <p>Date: {{ order.Order_Date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('games') }}">Back to Games</a>
+</body>
+</html>

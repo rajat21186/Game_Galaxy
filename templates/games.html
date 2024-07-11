@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Games</title>
+</head>
+<body>
+    <h2>Available Games</h2>
+    <ul>
+        {% for game in games %}
+            <li>
+                {{ game.Title }} - ${{ game.Price }}
+                <form action="{{ url_for('games') }}" method="post">
+                    <input type="hidden" name="game_id" value="{{ game.Game_ID }}">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('cart') }}">View Cart</a></p>
+</body>
+</html>

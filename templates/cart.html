@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+</head>
+<body>
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                {{ item.Title }} - ${{ item.Price }} x {{ item.Quantity }}
+                <form action="{{ url_for('cart') }}" method="post">
+                    <input type="hidden" name="game_id" value="{{ item.Game_ID }}">
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3>Total: ${{ total_amount }}</h3>
+    <form action="{{ url_for('place_order') }}" method="post">
+        <button type="submit">Place Order</button>
+    </form>
+    <p><a href="{{ url_for('games') }}">Continue Shopping</a></p>
+</body>
+</html>
